@@ -28,12 +28,14 @@
     "lyrics-finder": "^21.0.5",
     "play-dl": "^1.9.6",
     "soundcloud-downloader": "^0.2.3",
+    "spotify-web-api-node": "^5.0.2",
     "string-progressbar": "^1.0.4",
     "youtube-sr": "~4.3.0"
   },
   "devDependencies": {
     "@types/i18n": "^0.13.6",
-    "@types/node": "^20.5.0",
+    "@types/node": "^20.2.5",
+    "@types/spotify-web-api-node": "^5.0.7",
     "cz-conventional-changelog": "^3.0.1",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1"

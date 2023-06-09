@@ -51,7 +51,13 @@ export default {
     let playlist;
 
     try {
-      playlist = await Playlist.from(argSongName!.split(" ")[0], argSongName!);
+      if (argSongName?.includes("https://open.spotify.com/playlist/")) {
+        playlist = await Playlist.fromSpotify(argSongName!);
+      } else{
+        
+        playlist = await Playlist.from(argSongName!.split(" ")[0], argSongName!);
+        
+      }
     } catch (error) {
       console.error(error);
 
