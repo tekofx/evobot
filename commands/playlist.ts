@@ -52,6 +52,7 @@ export default {
 
     try {
       if (argSongName?.includes("https://open.spotify.com/playlist/")) {
+        await interaction.reply({ content: i18n.__("playlist.fetchingPlaylist") });
         playlist = await Playlist.fromSpotify(argSongName!);
       } else{
         
