@@ -56,7 +56,7 @@ export class Playlist {
     const tracksResponse = await spotifyApi.getPlaylistTracks(playlistId);
     const tracks = tracksResponse.body.items
       .filter(item => item.track !== null)
-      .map(item => item.track!.name);
+      .map(item => item.track!.name+" "+item.track!.artists[0].name);
 
     // Search for each track on YouTube and add it to a new YouTube playlist
     const youtubePlaylist = new YoutubePlaylist();
