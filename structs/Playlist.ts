@@ -52,6 +52,10 @@ export class Playlist {
     // Get the playlist ID from the URL
     const playlistId = spotifyUrl.split('/playlist/')[1].split('?')[0];
 
+    // Get the Spotify playlist
+    const playlistResponse = await spotifyApi.getPlaylist(playlistId);
+    const playlistName = playlistResponse.body.name;
+
     // Get the tracks in the Spotify playlist
     const tracksResponse = await spotifyApi.getPlaylistTracks(playlistId);
     const tracks = tracksResponse.body.items
@@ -60,6 +64,7 @@ export class Playlist {
 
     // Search for each track on YouTube and add it to a new YouTube playlist
     const youtubePlaylist = new YoutubePlaylist();
+    youtubePlaylist.title = playlistName;
     for (const track of tracks) {
       const result = await youtube.searchOne(track);
       youtubePlaylist.videos.push(result);
