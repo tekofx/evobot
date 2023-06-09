@@ -75,7 +75,7 @@
     "songAccessErr": "El video tiene restricción de edad, es privado o no está disponible"
   },
   "playlist": {
-    "description": "Reproduce una lista de reproducción de YouTube",
+    "description": "Reproduce una lista de reproducción de YouTube o Spotify",
     "usagesReply": "Uso correcto: {prefix}playlist <URL de la Lista de Reproducción en YouTube | Nombre de la Lista de Reproducción>",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
     "errorNotInSameChannel": "Tienes que estar en el mismo canal de voz que {user}",
