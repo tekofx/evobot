@@ -20,12 +20,12 @@
   },
   "dependencies": {
     "@discordjs/voice": "^0.16.0",
+    "@flytri/lyrics-finder": "^1.0.7",
     "array-move": "^3.0.1",
     "discord.js": "^14.11.0",
     "dotenv": "^16.3.1",
     "ffmpeg-static": "^4.4.1",
     "i18n": "^0.15.1",
-    "lyrics-finder": "^21.0.5",
     "play-dl": "^1.9.6",
     "soundcloud-downloader": "^0.2.3",
     "spotify-web-api-node": "^5.0.2",
