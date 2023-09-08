@@ -1,7 +1,7 @@
 import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import { i18n } from "../utils/i18n";
+import { Google } from "@flytri/lyrics-finder";
 // @ts-ignore
-import lyricsFinder from "lyrics-finder";
 import { bot } from "../index";
 
 export default {
@@ -17,7 +17,9 @@ export default {
     const title = queue.songs[0].title;
 
     try {
-      lyrics = await lyricsFinder(queue.songs[0].title, "");
+      await Google(queue.songs[0].query).then((response) => {
+        lyrics = response.lyrics;
+      });
       if (!lyrics) lyrics = i18n.__mf("lyrics.lyricsNotFound", { title: title });
     } catch (error) {
       lyrics = i18n.__mf("lyrics.lyricsNotFound", { title: title });
