@@ -41,11 +41,13 @@ export class Song {
     } else {
       const result = await youtube.searchOne(search);
 
-      result ? null : console.log(`No results found for ${search}`); // This is for handling the case where no results are found (spotify links for example)
+      result ? null : console.log(`No results found for ${search}`);
 
       if (!result) {
         let err = new Error(`No search results found for ${search}`);
+
         err.name = "NoResults";
+
         if (isURL.test(url)) err.name = "InvalidURL";
 
         throw err;
