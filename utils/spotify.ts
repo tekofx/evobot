@@ -23,7 +23,6 @@ class Spotify {
 
   public async getTrack(spotifyUrl: string) {
     const trackId = spotifyUrl.split("/track/")[1];
-    console.log(trackId);
 
     const songResponse = await this.SpotifyAPI.getTrack(trackId);
     const songName = songResponse.body.name;
