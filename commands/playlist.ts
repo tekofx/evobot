@@ -11,6 +11,7 @@ import { MusicQueue } from "../structs/MusicQueue";
 import { Playlist } from "../structs/Playlist";
 import { Song } from "../structs/Song";
 import { i18n } from "../utils/i18n";
+import { spotify } from "../utils/spotify";
 
 export default {
   data: new SlashCommandBuilder()
@@ -53,11 +54,9 @@ export default {
     try {
       if (argSongName?.includes("https://open.spotify.com/playlist/")) {
         await interaction.reply({ content: i18n.__("playlist.fetchingPlaylist") });
-        playlist = await Playlist.fromSpotify(argSongName!);
-      } else{
-        
+        playlist = await spotify.getPlaylist(argSongName);
+      } else {
         playlist = await Playlist.from(argSongName!.split(" ")[0], argSongName!);
-        
       }
     } catch (error) {
       console.error(error);

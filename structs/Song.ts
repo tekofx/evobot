@@ -15,17 +15,18 @@ export class Song {
   public readonly url: string;
   public readonly title: string;
   public readonly duration: number;
-  public readonly query:string;
+  public readonly query: string;
 
-  public constructor({ url, title, duration,query }: SongData) {
+  public constructor({ url, title, duration, query }: SongData) {
     this.url = url;
-    this.query=query;
+    this.query = query;
     this.title = title;
     this.duration = duration;
   }
 
   public static async from(url: string = "", search: string = "") {
     const isYoutubeUrl = videoPattern.test(url);
+    const isSpotifyUrl = url.includes("spotify.com");
 
     let songInfo;
 
@@ -38,7 +39,16 @@ export class Song {
         title: songInfo.video_details.title,
         duration: parseInt(songInfo.video_details.durationInSec)
       });
-    } else {
+    } /* else if (isSpotifyUrl) {
+      songInfo
+
+      return new this({
+        query: search,
+        url: songInfo.video_details.url,
+        title: songInfo.video_details.title,
+        duration: parseInt(songInfo.video_details.durationInSec)
+      });
+    } */ else {
       const result = await youtube.searchOne(search);
 
       result ? null : console.log(`No results found for ${search}`);

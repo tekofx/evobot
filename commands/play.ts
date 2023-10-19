@@ -55,6 +55,13 @@ export default {
       return bot.slashCommandsMap.get("playlist")!.execute(interaction, "song");
     }
 
+    // If playlist from spotity
+    if (url.includes("spotify.com/playlist")){ 
+      await interaction.editReply("🔗 Link is playlist from spotify").catch(console.error);
+
+      return bot.slashCommandsMap.get("playlist")!.execute(interaction, "song");
+    }
+
     let song;
 
     try {
