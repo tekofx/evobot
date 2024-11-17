@@ -2,6 +2,10 @@ import { AudioResource, createAudioResource, StreamType } from "@discordjs/voice
 import youtube from "youtube-sr";
 import { i18n } from "../utils/i18n";
 import { videoPattern, isURL } from "../utils/patterns";
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/master
 const { stream, video_basic_info } = require("play-dl");
 
 export interface SongData {
@@ -41,11 +45,13 @@ export class Song {
     } else {
       const result = await youtube.searchOne(search);
 
-      result ? null : console.log(`No results found for ${search}`); // This is for handling the case where no results are found (spotify links for example)
+      result ? null : console.log(`No results found for ${search}`);
 
       if (!result) {
         let err = new Error(`No search results found for ${search}`);
+
         err.name = "NoResults";
+
         if (isURL.test(url)) err.name = "InvalidURL";
 
         throw err;
@@ -64,8 +70,6 @@ export class Song {
 
   public async makeResource(): Promise<AudioResource<Song> | void> {
     let playStream;
-
-    let type = this.url.includes("youtube.com") ? StreamType.Opus : StreamType.OggOpus;
 
     const source = this.url.includes("youtube") ? "youtube" : "soundcloud";
 
